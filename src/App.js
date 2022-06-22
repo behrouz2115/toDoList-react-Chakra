@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect}  from 'react';
 
 //component
 import ToDO from './Component/ToDO';
@@ -10,7 +10,38 @@ import {Heading, VStack, IconButton, Box} from '@chakra-ui/react';
 //icons
 import {FaSun,FaMoon} from 'react-icons/fa';
 
+
 const App = () => {
+  const initialstate =[
+    {
+        id:1,
+        body:'ali'
+    },
+    {
+        id:2,
+        body:'vali' 
+    },
+    {
+        id:3,
+        body:'ali'
+    },
+    {
+        id:4,
+        body:'vali' 
+    }
+  ]
+
+  const [todo,setToDo]=useState(initialstate);
+
+///Delete
+  const deletToDo=(id)=>{
+    const newList =todo.filter(todo=>{
+      return todo.id === id;
+    }) ;
+    setToDo(newList);
+    console.log(newList);
+  }
+  
   return (
     <Box bg='#fbb034' height="100%">
     <VStack p={5} >
@@ -24,7 +55,7 @@ const App = () => {
             Todo List
          </Heading>
          <AddToDO/>
-         <ToDO/>
+         <ToDO todo={todo} deletToDo={deletToDo}/>
           
     </VStack>
       </Box>
