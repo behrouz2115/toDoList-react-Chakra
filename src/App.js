@@ -14,32 +14,25 @@ import {FaSun,FaMoon} from 'react-icons/fa';
 const App = () => {
   const initialstate =[
     {
-        id:1,
-        body:'ali'
-    },
-    {
-        id:2,
-        body:'vali' 
-    },
-    {
-        id:3,
-        body:'ali'
-    },
-    {
-        id:4,
-        body:'vali' 
+        id:"",
+        body:''
     }
   ]
 
-  const [todo,setToDo]=useState(initialstate);
+  const [todos,setToDo]=useState(initialstate);
 
 ///Delete
   const deletToDo=(id)=>{
-    const newList =todo.filter(todo=>{
+    const newList =todos.filter(todo=>{
       return todo.id === id;
     }) ;
     setToDo(newList);
     console.log(newList);
+  }
+
+  //Add to list 
+  const addToDo=(todo)=>{
+    setToDo([...todos,todo]);
   }
   
   return (
@@ -54,8 +47,8 @@ const App = () => {
                       textShadow='3p 1p 2p rgb(93,122,93)' >
             Todo List
          </Heading>
-         <AddToDO/>
-         <ToDO todo={todo} deletToDo={deletToDo}/>
+         <AddToDO addToDo={addToDo}/>
+         <ToDO todos={todos} deletToDo={deletToDo}/>
           
     </VStack>
       </Box>

@@ -7,8 +7,8 @@ import {FaTrash, FaCheck} from 'react-icons/fa';
 //Chakra
 import {HStack, IconButton, VStack, Text, StackDivider, Spacer, Badge} from '@chakra-ui/react';
 
-const ToDO = ({todo,deletToDo}) => {
-    if (!todo.length){
+const ToDO = ({todos,deletToDo}) => {
+    if (!todos.length){
         return(
             <Badge colorScheme="green" borderRadius="lg" shadow="outline" p="4" m="5"> Nothing to do today!</Badge>
         )
@@ -21,12 +21,12 @@ const ToDO = ({todo,deletToDo}) => {
                 width="50%"
                 borderColor="black.100" 
                 borderRadius="lg">
-            {todo.map(show=>(
+            {todos.map(show=>(
                 <HStack bg="white"   key={show.id}>
                     <Text paddingLeft="10px" >{show.body}</Text>
                     <Spacer/>
                     <IconButton colorScheme="green" icon={<FaCheck/>} />
-                    <IconButton colorScheme="red" icon={<FaTrash/>} onClick={()=>deletToDo(todo.id)} />
+                    <IconButton colorScheme="red" icon={<FaTrash/>} onClick={()=>deletToDo(todos.id)} />
                 </HStack>
             ))}
        </VStack>
