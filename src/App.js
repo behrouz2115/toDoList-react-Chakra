@@ -12,7 +12,7 @@ import {FaSun,FaMoon} from 'react-icons/fa';
 
 const App = () => {
   return (
-    <Box bg='#fbb034'>
+    <Box bg='#fbb034' height="100%">
     <VStack p={5} >
          <IconButton icon={<FaSun/>} isRound='true'
                                      alignSelf='flex-end'
@@ -23,8 +23,8 @@ const App = () => {
                       textShadow='3p 1p 2p rgb(93,122,93)' >
             Todo List
          </Heading>
-         <ToDO/>
          <AddToDO/>
+         <ToDO/>
           
     </VStack>
       </Box>

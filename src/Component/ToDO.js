@@ -1,11 +1,11 @@
 import React from 'react';
 
 //icons 
-import {FaTrash} from 'react-icons/fa';
+import {FaTrash, FaCheck} from 'react-icons/fa';
 
 
 //Chakra
-import {HStack, IconButton, VStack, Text} from '@chakra-ui/react';
+import {HStack, IconButton, VStack, Text, StackDivider, Spacer} from '@chakra-ui/react';
 
 const ToDO = () => {
     const todo =[
@@ -16,14 +16,30 @@ const ToDO = () => {
         {
             id:2,
             body:'vali' 
+        },
+        {
+            id:3,
+            body:'ali'
+        },
+        {
+            id:4,
+            body:'vali' 
         }
     ]
     return (
-       <VStack>
+       <VStack divider={<StackDivider/>} 
+                // borderWidth="thin"
+                alignItems="stretch" 
+                width="50%"
+                // p="5px"
+                borderColor="black.100" 
+                borderRadius="lg">
             {todo.map(show=>(
-                <HStack key={show.id}>
-                    <Text>{show.body}</Text>
-                    <IconButton icon={<FaTrash/>} isRound='true'/>
+                <HStack bg="white"   key={show.id}>
+                    <Text >{show.body}</Text>
+                    <Spacer/>
+                    <IconButton colorScheme="green" icon={<FaCheck/>} />
+                    <IconButton colorScheme="red" icon={<FaTrash/>} />
                 </HStack>
             ))}
        </VStack>
