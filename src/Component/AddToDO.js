@@ -4,23 +4,31 @@ import React,{useState} from 'react';
 import { nanoid } from 'nanoid';
 
 //Chakra
-import { HStack, IconButton, Input } from '@chakra-ui/react';
+import { HStack, IconButton, Input, useToast } from '@chakra-ui/react';
 
 //Icons
 import {FaPlusSquare} from 'react-icons/fa';
 
 
 const AddToDO = ({addToDo}) => {
-   
+
+    const toast =useToast();   
 
     const submitHandler=(event)=>{
         event.preventDefault();
-        // console.log(content);
+        if(!content){
+            toast({
+                title: 'Add to list please.',
+                status: 'info',
+                duration: 3000,
+                isClosable: true,
+              });
+              return
+        }
         const todo={
             id:nanoid(),
             body: content
         }
-        // console.log(todo);
         addToDo(todo);
         setContent('');
     }
