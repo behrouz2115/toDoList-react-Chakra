@@ -14,7 +14,9 @@ import {FaSun,FaMoon} from 'react-icons/fa';
 const App = () => {
 
   const [todos,setToDo]=useState([]);
-  console.log(todos[0])
+  useEffect(()=>{
+    localStorage.setItem('todos', JSON.stringify(todos))
+  },[todos])
 
 ///Delete
   const deletToDo=(id)=>{
@@ -29,8 +31,7 @@ const App = () => {
   //Add to list 
   const addToDo=(todo)=>{
     setToDo([...todos,todo]);
-  }
-
+  }  
   
   return (
     <Box bg='#fbb034' height="100%" size="full">
