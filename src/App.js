@@ -5,7 +5,7 @@ import ToDO from './Component/ToDO';
 import AddToDO from './Component/AddToDO';
 
 //Chakra 
-import {Heading, VStack, IconButton, Box} from '@chakra-ui/react';
+import {Heading, VStack, IconButton, Box, useColorMode} from '@chakra-ui/react';
 
 //icons
 import {FaSun,FaMoon} from 'react-icons/fa';
@@ -32,23 +32,28 @@ const App = () => {
   const addToDo=(todo)=>{
     setToDo([...todos,todo]);
   }  
+
+  //colorMood
+  const {colorMode,toggleColorMode}=useColorMode();
   
   return (
-    <Box bg='#fbb034' height="100%" size="full">
+    <Box bg={colorMode==="light"? '#fbb034' : "black"}  height="100%" size="full">
     <VStack p={5} >
-         <IconButton icon={<FaSun/>} isRound='true'
+      
+         <IconButton icon={colorMode==="light"?  <FaSun/>:<FaMoon/>} isRound='true'
                                      alignSelf='flex-end'
-                                     size='lg'/>
+                                     size='lg'
+                                     onClick={toggleColorMode}></IconButton>
          <Heading mb='5' 
                       size='2xl'
                       color='#fff'
                       textShadow='3p 1p 2p rgb(93,122,93)' >
             Todo List
          </Heading>
-         <AddToDO addToDo={addToDo}/>
+         <AddToDO addToDo={addToDo} colorMode={colorMode}/>
          {
     
-       <ToDO todos={todos} deletToDo={deletToDo}/>
+       <ToDO todos={todos} deletToDo={deletToDo} colorMode={colorMode}/>
     }
           
     </VStack>
