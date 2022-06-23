@@ -12,22 +12,17 @@ import {FaSun,FaMoon} from 'react-icons/fa';
 
 
 const App = () => {
-  const initialstate =[
-    {
-        id:"",
-        body:''
-    }
-  ]
 
-  const [todos,setToDo]=useState(initialstate);
+  const [todos,setToDo]=useState([]);
+  console.log(todos[0])
 
 ///Delete
   const deletToDo=(id)=>{
     const newList =todos.filter(todo=>
       todo.id!==id
-    ) ;
-    setToDo(newList);
-    console.log(newList);
+      ) ;
+      setToDo(newList);
+      console.log(newList);
     return newList;
   }
 
@@ -35,9 +30,10 @@ const App = () => {
   const addToDo=(todo)=>{
     setToDo([...todos,todo]);
   }
+
   
   return (
-    <Box bg='#fbb034' height="100%">
+    <Box bg='#fbb034' height="100%" size="full">
     <VStack p={5} >
          <IconButton icon={<FaSun/>} isRound='true'
                                      alignSelf='flex-end'
@@ -50,8 +46,8 @@ const App = () => {
          </Heading>
          <AddToDO addToDo={addToDo}/>
          {
-      
-        todos.length >1 && <ToDO todos={todos} deletToDo={deletToDo}/>
+    
+       <ToDO todos={todos} deletToDo={deletToDo}/>
     }
           
     </VStack>
