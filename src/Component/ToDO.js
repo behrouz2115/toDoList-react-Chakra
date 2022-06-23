@@ -26,7 +26,7 @@ const ToDO = ({todos,deletToDo}) => {
                     <Text paddingLeft="10px" >{show.body}</Text>
                     <Spacer/>
                     <IconButton colorScheme="green" icon={<FaCheck/>} />
-                    <IconButton colorScheme="red" icon={<FaTrash/>} onClick={()=>deletToDo(todos.id)} />
+                    <IconButton colorScheme="red" icon={<FaTrash/>} onClick={()=>deletToDo(show.id)} />
                 </HStack>
             ))}
        </VStack>

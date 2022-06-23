@@ -23,11 +23,12 @@ const App = () => {
 
 ///Delete
   const deletToDo=(id)=>{
-    const newList =todos.filter(todo=>{
-      return todo.id === id;
-    }) ;
+    const newList =todos.filter(todo=>
+      todo.id!==id
+    ) ;
     setToDo(newList);
     console.log(newList);
+    return newList;
   }
 
   //Add to list 
@@ -48,7 +49,10 @@ const App = () => {
             Todo List
          </Heading>
          <AddToDO addToDo={addToDo}/>
-         <ToDO todos={todos} deletToDo={deletToDo}/>
+         {
+      
+        todos.length >1 && <ToDO todos={todos} deletToDo={deletToDo}/>
+    }
           
     </VStack>
       </Box>
