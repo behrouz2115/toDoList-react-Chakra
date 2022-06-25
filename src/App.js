@@ -15,8 +15,10 @@ const App = () => {
 
   const [todos,setToDo]=useState([]);
   useEffect(()=>{
-    localStorage.setItem('todos', JSON.stringify(todos))
+    localStorage.setItem('todos', JSON.stringify(todos)); 
   },[todos])
+
+
 
 ///Delete
   const deletToDo=(id)=>{
@@ -37,7 +39,7 @@ const App = () => {
   const {colorMode,toggleColorMode}=useColorMode();
   
   return (
-    <Box bg={colorMode==="light"? '#fbb034' : "black"}  height="100%" size="full">
+    <Box bg={colorMode==="light"? '#fbb034' : "black"}  size="full" h='calc(100vh)' >
     <VStack p={5} >
       
          <IconButton icon={colorMode==="light"?  <FaSun/>:<FaMoon/>} isRound='true'

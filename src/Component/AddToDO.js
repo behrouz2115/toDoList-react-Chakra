@@ -36,7 +36,7 @@ const AddToDO = ({addToDo}) => {
     return (
      <form onSubmit={submitHandler}>
             <HStack  margin="20px">
-              <Input variant="filled" placeholder='Enter ...' value={content} onChange={(event)=>setContent(event.target.value)} />
+              <Input _focus={{bg:"gray.300"}} variant="filled" placeholder='Enter ...' value={content} onChange={(event)=>setContent(event.target.value)} />
               <IconButton  type="submit" colorScheme="pink" icon={<FaPlusSquare/>} isRound='true'/>
             </HStack>
      </form>
